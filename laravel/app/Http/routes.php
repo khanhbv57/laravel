@@ -61,3 +61,21 @@ Route::group(['prefix'=>'nganh'], function(){
 	});
 
 });
+Route::get('goi-view',function(){
+	return view('layout.content');
+});
+Route::get('goi-layout',function(){
+	return view('layout.sub.layout');
+});
+View::share('title','Lập trình laravel5.2');
+View::composer('layout.sub.layout',function($temp){
+	return $temp->with('thongtin','Đây là trang cá nhân');
+});
+Route::get('check-view',function(){
+	if(view()->exists('layout.sub.layout')){
+		return "tồn tại View";
+	}else {
+
+		return "không tồn tại view";
+	}
+});
