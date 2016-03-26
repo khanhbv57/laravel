@@ -177,3 +177,23 @@ Route::get('query/max',function(){
 	$data = DB::table('user')->max('tuoi');
 	echo $data;
 });
+Route::get('model/select-all',function(){
+	$data = App\Product::all()->toArray();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+
+});
+Route::get('model/select-id',function(){
+	$data = App\Product::findOrFail(2)->tojSon();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+
+});
+Route::get('model/where',function(){
+	$data = App\Product::where('price',500000)->get()->toArray();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
