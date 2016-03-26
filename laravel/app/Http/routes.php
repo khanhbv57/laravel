@@ -127,3 +127,53 @@ Route::get('schema/create/product',function(){
 		$table->timestamps();
 	});
 });
+Route::get('query/select-all',function(){
+	$data = DB::table('user')->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/select-column',function(){
+	$data = DB::table('user')->select('hoten')->where('tuoi',20)->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/order',function(){
+	$data = DB::table('product')->orderBy('id','DESC')->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/limit',function(){
+	$data = DB::table('product')->skip(2)->take(2)->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/between',function(){
+	$data = DB::table('product')->whereBetween('id',[1,2])->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/where-in',function(){
+	$data = DB::table('product')->whereIn('id',[2,4])->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/where-not-in',function(){
+	$data = DB::table('product')->whereNotIn('id',[2,4])->get();
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+});
+Route::get('query/count',function(){
+	$data = DB::table('user')->count();
+	echo $data;
+});
+Route::get('query/max',function(){
+	$data = DB::table('user')->max('tuoi');
+	echo $data;
+});
