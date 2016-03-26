@@ -87,7 +87,7 @@ Route::get('schema/create',function(){
 
 		$table->increments('id');
 		$table->string('hoten');
-		$table->integer('tuổi');
+		$table->integer('tuoi');
 		$table->text('ghichu')->nullable;
 	});
 });

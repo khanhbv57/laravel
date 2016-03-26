@@ -12,23 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	//Model::unguard();
-         $this->call(ProductTableSeeder::class);
+        //$this->call(ProductTableSeeder::class);
+        DB::table('user')->insert([
+        	'hoten'=>'Nguyen Van A',
+        	'tuoi'=>20,
+        	'ghichu'=>'da vàng',
+        ]);
     }
-}
-class ProductTableSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        // $this->call(UsersTableSeeder::class);
-        DB::table('product')->insert([
-        	'name'=>'Áo thun',
-        	'price'=>'5000',
-        	'cate_id'=>1),
-        	]);
-    }
+
 }
