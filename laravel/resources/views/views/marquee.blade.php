@@ -1,0 +1,1 @@
+<marquee> Chào mừng bạn đến trang lập trình laravel</marquee>

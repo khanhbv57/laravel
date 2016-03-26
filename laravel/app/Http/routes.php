@@ -79,3 +79,6 @@ Route::get('check-view',function(){
 		return "không tồn tại view";
 	}
 });
+Route::get('goi-master',function(){
+	return view('views.sub');
+});
