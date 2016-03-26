@@ -197,3 +197,6 @@ Route::get('model/where',function(){
 	print_r($data);
 	echo "</pre>";
 });
+Route::get('form/layout',function(){
+	return view('form.layout');
+});
