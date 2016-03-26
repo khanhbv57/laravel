@@ -82,3 +82,48 @@ Route::get('check-view',function(){
 Route::get('goi-master',function(){
 	return view('views.sub');
 });
+Route::get('schema/create',function(){
+	Schema::create('user',function($table){
+
+		$table->increments('id');
+		$table->string('hoten');
+		$table->integer('tuổi');
+		$table->text('ghichu')->nullable;
+	});
+});
+Route::get('schema/rename',function(){
+	Schema::rename('user','tb_user');
+});
+Route::get('schema/drop',function(){
+	Schema::drop('user');
+});
+Route::get('schema/drop-exists',function(){
+	Schema::dropIfExists('user');
+});
+Route::get('schema/change',function(){
+	Schema::table('user',function($table){
+		$table->string('hoten',50)->change();
+	});
+});
+Route::get('schema/drop-col',function(){
+	Schema::table('user',function($table){
+		$table->dropColumn('ghichu');
+	});
+});
+Route::get('schema/create/cate',function(){
+	Schema::create('category',function($table){
+		$table->increments('id');
+		$table->string('name');
+		$table->timestamps();
+	});
+});
+Route::get('schema/create/product',function(){
+	Schema::create('product',function($table){
+		$table->increments('id');
+		$table->string('name');
+		$table->integer('price');
+		$table->integer('cate_id')->unsigned();
+		$table->foreign('cate_id')->references('id')->on('category');
+		$table->timestamps();
+	});
+});
