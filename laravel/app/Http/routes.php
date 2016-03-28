@@ -200,3 +200,10 @@ Route::get('model/where',function(){
 Route::get('form/layout',function(){
 	return view('form.layout');
 });
+Route::post('form/data',['as'=>'sendEmail',function(){
+	return "Gửi thành công";
+}]);
+Route::get('form/dang-ky',function(){
+	return view('form.dangky');
+});
+Route::post('form/dang-ky-thanh-vien',['as'=>'postDangky','uses'=>'laravelControllers@them']);
